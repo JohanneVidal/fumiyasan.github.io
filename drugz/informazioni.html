@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informzaioni</title>
+    <link rel="icon" href="Livello1.png">
+</head>
+<style>
+    html,body{
+    overflow-x: hidden;
+}
+
+    body {
+        background: linear-gradient(-90deg, #3700fd, #b700ff, #470070, #ff0077);
+        background-size: 400% 400%;
+        animation: gradient 15s ease infinite;
+    }
+
+    @keyframes gradient {
+        0% {background-position: 0% 50%;}
+
+        50% {background-position: 100% 50%;}
+
+        100% {background-position: 0% 50%;}
+    }
+
+    .flex-squadra{
+  display: flex;
+  background-color: rgba(234, 0, 255, 0.568);
+  margin: 2em;
+  padding: 2em;
+  justify-content: space-between;
+}
+  :root{
+  --color-1: #b700ff9d;
+}
+body{
+	line-height: 1.5;
+	font-family: sans-serif;
+	background-color: #c6cde0;
+}
+*{
+	box-sizing: border-box;
+	margin:0;
+	padding:0;
+}
+.container{
+	max-width: 1170px;
+	margin: auto;
+    box-sizing: border-box;
+}
+.row{
+	display: flex;
+	flex-wrap: wrap;
+}
+
+/*header*/
+.header{
+	background-color: var(--color-1);
+	padding:12px 0;
+	position: relative;
+}
+.header .logo1,
+.header .nav{
+	padding:0 15px;
+}
+.header .logo1 a{
+	font-size: 30px;
+	color: #ffffff;
+	text-transform: capitalize;
+}
+.header .nav ul li{
+	display: inline-block;
+	margin-left: 40px;
+}
+.header .nav ul li a{
+	display: block;
+	font-size: 16px;
+	padding:10px 0;
+	color: rgba(255,255,255,0.7);
+	text-transform: capitalize;
+	transition: all 0.5s ease;
+}
+
+.header .nav ul li a:hover,
+.header .nav ul li a.active{
+	color: #ffffff;
+}
+    
+.pic
+{
+    margin:1em;
+}
+
+@media only screen and (max-width: 600px)
+{
+    .header
+    {
+	background-color: var(--color-1);
+	padding: auto;
+	position: relative;
+    }
+
+   
+
+    .flex-squadra
+    {
+        display:block;
+        background-color: rgba(234, 0, 255, 0.568);
+        margin: 2em;
+        padding: 2em;
+        justify-content: space-between;
+    }
+
+    .pic 
+    {
+        max-width: 20em;
+        max-height: 10em;
+        display: block;
+        margin-left: auto 1em;
+        margin-right: auto;
+        z-index: 1;
+    }
+}
+</style>
+<body>
+    
+
+<header class="header">
+        <div class="container">
+            <div class="row" style="align-items:center;justify-content:space-between;">
+               <div class="logo1">
+                 <a href="#" style="text-decoration:none;font-size:60px">drugZ</a>
+               </div>
+               <nav class="nav">
+                  <ul style="list-style:none;">
+                     <li><a href="index.html">home</a></li>
+                     <li><a href="https://www.bandai.com/" target="_blank">Bandai</a></li>
+                     <li><a href="#" class="active">infromazioni</a></li>
+                     <li><a href="rick.html">negozio</a></li>
+                  </ul>
+               </nav>
+            </div>
+        </div>
+     </header>
+
+<div class="flex-squadra">
+
+    <div class="team">
+        <h1>Johanne "Fumiya" Vidal</h1>
+        <h2>Web Developer</h2>
+    </div>
+    
+    <br>
+    
+    <div class="team">
+        <h1>Marco "Cop300" Coppola</h1>
+        <h2>Web Editor</h2>
+    </div>
+    
+    <br>
+    
+    <div class="team">
+        <h1>Alessandro "Spartan" Petrocco</h1>
+        <h2>Graphic Designer</h2>
+    </div>
+
+</div>
+
+<center><img class="pic" src="sus.png" alt="sus"></center>
+
+<!--<div>
+    <img src="" alt="cop300">
+</div>-->
+
+<center><h3>Musica di sottofondo:</h3>
+<audio controls autoplay>
+  <source src="Ghost.mp3" type="audio/mp3">
+</audio></body></center>
+</body>
+</html>
