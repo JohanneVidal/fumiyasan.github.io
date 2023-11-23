@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="ISO-8859-1" />
+    <title>Automobili</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <script>
+      var automobili = [];
+
+      function Macchina(targa, marca, modello, cilindrata, prezzo) {
+        this.targa = targa;
+        this.marca = marca;
+        this.modello = modello;
+        this.cilindrata = cilindrata;
+        this.prezzo = prezzo;
+        this.toString = function () {
+          return (
+            "Macchina[Targa=" +
+            this.targa +
+            ", Marca=" +
+            this.marca +
+            ", Modello=" +
+            this.modello +
+            ", Cilindrata=" +
+            this.cilindrata +
+            ", Prezzo=" +
+            this.prezzo
+          );
+        };
+      }
+
+      function creaAutomobile() {
+        var targa = document.getElementById("targa").value;
+        var marca = document.getElementById("marca").value;
+        var modello = document.getElementById("modello").value;
+        var cilindrata = document.getElementById("cilindrata").value;
+        var prezzo = document.getElementById("prezzo").value;
+
+        automobile = new Macchina(targa, marca, modello, cilindrata, prezzo);
+
+        automobili.push(automobile);
+
+        alert("Automobile creata con successo!");
+        popolaTabella(automobile);
+      }
+
+      function stampaAutomobili() {
+        automobili.forEach((x) => console.log(x));
+        automobili.forEach((x) => alert(x));
+      }
+
+      function cercaAutomobile() {
+        var targaCercata = prompt(
+          "Inserisci la targa dell'automobile da cercare:"
+        );
+        var automobileTrovata = null;
+
+        automobili.forEach(function (automobile) {
+          if (automobile.targa === targaCercata) {
+            automobileTrovata = automobile;
+          }
+        });
+
+        if (automobileTrovata) {
+          console.log(automobileTrovata);
+          alert("Automobile trovata : " + automobileTrovata);
+        } else {
+          alert("Automobile non trovata.");
+        }
+      }
+
+      function contaAutomobiliPerMarca() {
+        var marcaDaContare = prompt("Inserisci la marca da contare:");
+        var numeroAutomobili = 0;
+
+        automobili.forEach(function (automobile) {
+          if (automobile.marca === marcaDaContare) {
+            numeroAutomobili++;
+          }
+        });
+
+        console.log(
+          "Numero di automobili con marca " +
+            marcaDaContare +
+            ": " +
+            numeroAutomobili
+        );
+        alert(
+          "Numero di automobili con marca " +
+            marcaDaContare +
+            ": " +
+            numeroAutomobili
+        );
+      }
+
+      function mostraAutomobileCostosa() {
+        var automobileCostosa = null;
+
+        automobili.forEach(function (automobile) {
+          if (
+            !automobileCostosa ||
+            automobile.prezzo > automobileCostosa.prezzo
+          ) {
+            automobileCostosa = automobile;
+          }
+        });
+
+        console.log(automobileCostosa);
+        alert("Automobile piu costosa. Modello: " + automobileCostosa);
+      }
+
+      function popolaTabella(automobile) {
+        var tbody = document.getElementById("tbody");
+
+        var riga = document.createElement("tr");
+        var targaCella = document.createElement("td");
+        var marcaCella = document.createElement("td");
+        var modelloCella = document.createElement("td");
+        var cilindrataCella = document.createElement("td");
+        var prezzoCella = document.createElement("td");
+
+        targaCella.innerText = automobile.targa;
+        marcaCella.innerText = automobile.marca;
+        modelloCella.innerText = automobile.modello;
+        cilindrataCella.innerText = automobile.cilindrata;
+        prezzoCella.innerText = automobile.prezzo;
+
+        riga.appendChild(targaCella);
+        riga.appendChild(marcaCella);
+        riga.appendChild(modelloCella);
+        riga.appendChild(cilindrataCella);
+        riga.appendChild(prezzoCella);
+
+        tbody.appendChild(riga);
+      }
+    </script>
+  </head>
+  <style>
+    body {
+      background-color: silver;
+    }
+    .form-label {
+      font-weight: bold;
+    }
+    .container div {
+      margin-top: 20px;
+    }
+    .btn-group-vertical button {
+      font-weight: bold;
+    }
+    #thead th {
+      color: gray;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-2">
+          <form>
+            <div class="mb-3">
+              <label for="targa" class="form-label">Targa</label>
+              <input type="text" class="form-control" id="targa" name="targa" />
+            </div>
+            <div class="mb-3">
+              <label for="marca" class="form-label">Marca</label>
+              <input type="text" class="form-control" id="marca" name="marca" />
+            </div>
+            <div class="mb-3">
+              <label for="modello" class="form-label">Modello</label>
+              <input
+                type="text"
+                class="form-control"
+                id="modello"
+                name="modello"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="cilindrata" class="form-label">Cilindrata</label>
+              <input
+                type="number"
+                class="form-control"
+                id="cilindrata"
+                name="cilindrata"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="prezzo" class="form-label">Prezzo</label>
+              <input
+                type="number"
+                class="form-control"
+                id="prezzo"
+                name="prezzo"
+              />
+            </div>
+          </form>
+
+          <button
+            type="button"
+            class="btn btn-outline-primary btn-lg"
+            onclick="creaAutomobile()"
+          >
+            Crea Auto
+          </button>
+          <br /><br />
+          <button
+            type="button"
+            class="btn btn-outline-secondary btn-lg"
+            onclick="cercaAutomobile()"
+          >
+            Cerca targa
+          </button>
+          <br /><br />
+          <button
+            type="button"
+            class="btn btn-outline-primary btn-lg"
+            onclick="mostraAutomobileCostosa()"
+          >
+            Mostra piu caro
+          </button>
+          <br /><br />
+          <button
+            type="button"
+            class="btn btn-outline-secondary btn-lg"
+            onclick="contaAutomobiliPerMarca()"
+          >
+            Conta per marca
+          </button>
+        </div>
+        <div class="col-10">
+          <table class="table table-hover">
+            <thead id="thead">
+              <tr>
+                <th>Targa</th>
+                <th>Marca</th>
+                <th>Modello</th>
+                <th>Cilindrata</th>
+                <th>Prezzo</th>
+              </tr>
+            </thead>
+            <tbody id="tbody">
+              <!-- Questo sarà popolato dinamicamente con le automobili -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
